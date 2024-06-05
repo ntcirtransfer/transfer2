@@ -2,7 +2,8 @@ clone from the official repository of AIO
 ```
 git clone https://github.com/cl-tohoku/AIO3_FiD_baseline
 ```
-No need for docker in transfer2
+- No need for docker in transfer2
+- Download our trained models (official model release from AIO has ended)
 # preparation for retriver
 - download retriver and embedding from ...
 - mkdir retrivers/AIO3_DPR/model
