@@ -1,6 +1,7 @@
-- AI王から提供されているもの
+- Officially released from AIO organizers
   - AIO3_FiD_baseline
-    - DPR + Fusion in decoderのベースライン
+    - DPR + Fusion in decoder baseline
+    - DPR and FiD models were trained and released by transfer-2 organizers
   - AIO3_GPT_baseline
-    - GPT(finetuneなし)のベースライン
+    - GPT baseline
 
