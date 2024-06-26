@@ -1,0 +1,9 @@
+*-checkpoint.ipynb
+*-checkpoint.md
+*.swp
+__pycache__
+DCLR/indexes/**
+DCLR/models/**
+DCLR/runs/**
+DCLR/testcollections/**
+venv
