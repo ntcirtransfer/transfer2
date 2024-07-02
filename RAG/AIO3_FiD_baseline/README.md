@@ -5,12 +5,12 @@ git clone https://github.com/cl-tohoku/AIO3_FiD_baseline
 - No need for docker in transfer2
 - Download our trained models (official model release from AIO has ended)
 # preparation for retriver
-- download retriver and embedding from [dropbox](https://www.dropbox.com/scl/fi/rayemlpb4jiqfnsuxjmpy/retrivers.tar.gz?rlkey=637yjm7npn0js1gi3hlo0zjxi&st=qmlsl3hl&dl=0)
+- download retriver and embedding from [Google Drive](https://drive.google.com/file/d/1y8G_WB5bZLmAWBL8b3-AlGRVAprR0498/view?usp=sharing)
 - mkdir retrivers/AIO3_DPR/model
 - put them into the above directory
 
 # preparation for FiD
-- download FiD from [dropbox](https://www.dropbox.com/scl/fi/woo1gm5kub01mvmw1i8yl/fusion-in-decoder.tar.gz?rlkey=u3lgx2ql604pbqz0zq9j6b6z5&st=fcyn6mzl&dl=0)
+- download FiD from [Google Drive](https://drive.google.com/file/d/1t-jKeaXDmjzFZWym5oBd_rgX9nPR7RfT/view?usp=sharing)
 - mkdir generators/fusion_in_decoder/model
 - put them into the above directory 
 
