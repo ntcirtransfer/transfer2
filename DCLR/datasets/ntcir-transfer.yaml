@@ -1,0 +1,65 @@
+_:
+  pretty_name: "NTCIR Transfer"
+  desc: '
+<p>
+Resource Transfer Based Dense Retrieval Task at NTCIR
+</p>
+<ul>
+<li><a href="https://research.nii.ac.jp/ntcir/ntcir-18/tasks.html#Transfer-2">Website</a></li>
+</ul>
+'
+
+1:
+  desc: '
+<p>
+Resource Transfer Based Dense Retrieval Task at NTCIR-17
+</p>
+<ul>
+<li><a href="http://research.nii.ac.jp/ntcir/ntcir-17/tasks.html#Transfer">Website</a></li>
+</ul>
+'
+
+1/train:
+  desc: '
+<p>
+NTCIR-17 Transfer Task train set.
+</p>
+'
+
+1/eval:
+  desc: '
+<p>
+NTCIR-17 Transfer Task eval set. No qrels.
+</p>
+'
+
+2:
+  desc: '
+<p>
+Resource Transfer Based Dense Retrieval Task at NTCIR-18 (Dense Cross Language Retrieval subtask)
+</p>
+<ul>
+<li><a href="https://research.nii.ac.jp/ntcir/ntcir-18/tasks.html#Transfer-2">Website</a></li>
+</ul>
+'
+
+2/train:
+  desc: '
+<p>
+NTCIR-18 Transfer Task train set.
+</p>
+'
+
+2/valid:
+  desc: '
+<p>
+NTCIR-18 Transfer Task valid set.
+</p>
+'
+
+2/eval:
+  desc: '
+<p>
+NTCIR-18 Transfer Task eval set. No qrels.
+</p>
+'
