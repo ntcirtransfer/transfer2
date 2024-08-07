@@ -11,5 +11,6 @@ We use
 
 ## Experiments
 
-- [experiment-transfer2-train.ipynb](./experiment-transfer2-train.ipynb) (Train set)
-- [experiment-transfer2-valid.ipynb](./experiment-transfer2-valid.ipynb) (Valid set)
+- [experiment-transfer2-train.ipynb](./experiment-transfer2-train.ipynb) (Train set with BM25)
+- [experiment-transfer2-valid.ipynb](./experiment-transfer2-valid.ipynb) (Valid set with BM25)
+- [experiment2-transfer2-train.ipynb](./experiment2-transfer2-train.ipynb) (Train set with mDPR)
