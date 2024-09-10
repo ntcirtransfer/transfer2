@@ -1,6 +1,6 @@
 This is a baseline of llamaindex.
 
-# preparation
+# processing wikipedia for RAG
 - ``pip install -r requirements.txt`` to install required packages
 - Just copy dataset directory from FiDbaseline (we don't write any files into this directory, so the symbolic link is enough) ``ln -s {AIO3_FiD_baseline_dir}/dataset .``
 - ``python prep_data.py``
