@@ -1,6 +1,6 @@
 This is a baseline of llamaindex.
 
-# processing wikipedia for RAG
+# make a text file per topic from wikipedia for RAG
 - Just copy dataset directory from FiDbaseline (we don't write any files into this directory, so the symbolic link is enough) ``ln -s {AIO3_FiD_baseline_dir}/dataset .``
 - ``python prep_data.py``
 
