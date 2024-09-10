@@ -1,6 +1,6 @@
 This is a baseline of llamaindex.
 
-run setup.sh to install required packages
+run ``pip install -r requirements.txt`` to install required packages
 - First, just copy dataset directory from FiDbaseline (we don't write any files into this directory, so the symbolic link can be used)
 - Second, run ``python prep_data.py``
 - Third, run ``python run.py``
