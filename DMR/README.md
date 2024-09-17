@@ -85,7 +85,7 @@ DMR/
  ├ train.ipynb       Jupyter notebook for model training  
  ├ train.py          Python script equivalent to `train.ipynb`  
  ├ dpr_models.py     Model definition file  
- └ Dockerfile    A file with instructions for creating a Docker image
+ └ Dockerfile        A file with instructions for creating a Docker image
 ```
 
 - The directory structure under `Lifelog-6/` is assumed to be as follows:
