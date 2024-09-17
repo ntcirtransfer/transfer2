@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[105]:
+# In[ ]:
 
 
 # Define libraries
@@ -15,7 +15,7 @@ import torch.optim as optim
 from torchvision import transforms, io
 from torch.utils.data import DataLoader, Dataset
 from sklearn.metrics import pairwise_distances
-import dpr_models as dpr_models
+import dpr_models
 importlib.reload(dpr_models)
 
 # Define run name
@@ -23,6 +23,7 @@ run_name = 'baseline'
 
 # Check if CUDA is available
 device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+print(f'Use {device}')
 # Check if MPS is available
 #device = torch.device('mps') if torch.backends.mps.is_available() else torch.device('cpu')
 
@@ -31,17 +32,17 @@ configs = {'lifelog_dir':'./Lifelog-6/',
            'embedding_dim':512,
            'hidden_dim':512,
            'batch_size':512,
-           'epochs':500,
+           'epochs':10,
            'N_valid':200,
            'sensor_feats':['heart_rate(bpm)','heart_rate_conf','calories','distance',
                            'minutesAsleep','minutesAwake','minutesAfterWakeup','timeInBed','sleep_efficiency',
                            'new_lat','new_lng','semantic_name','categories','movement','city'],
            'normalization':True,
-           'model_path':f'models/{run_name}.pth',
-           'configs_path':f'models/{run_name}.pkl'}
+           'model_path':f'./models/{run_name}.pth',
+           'configs_path':f'./models/{run_name}.pkl'}
 
 
-# In[106]:
+# In[20]:
 
 
 # Load sensor data
@@ -81,7 +82,7 @@ sensor_data = df_sampled[configs['sensor_feats']].fillna(0.).values
 sensor_data = torch.from_numpy(sensor_data.astype(np.float32)).clone()
 
 
-# In[107]:
+# In[21]:
 
 
 # Load image data
@@ -94,7 +95,7 @@ for image_path in df_sampled['ImageID_full'].tolist():
 image_data = torch.stack(images_list, dim=0)
 
 
-# In[108]:
+# In[ ]:
 
 
 # Check shape of data
@@ -102,7 +103,7 @@ print('Image data: ', image_data.shape)
 print('Snesor data:', sensor_data.shape)
 
 
-# In[109]:
+# In[23]:
 
 
 # Create a dataset class for image and sensor
@@ -137,7 +138,7 @@ train_data_loader = DataLoader(train_dataset, batch_size=configs['batch_size'], 
 valid_data_loader = DataLoader(valid_dataset, batch_size=configs['batch_size'])
 
 
-# In[110]:
+# In[24]:
 
 
 # Define DPR model
@@ -159,7 +160,7 @@ optimizer = optim.Adam(dpr_model.parameters(), lr=1e-4)
 criterion = dpr_models.SimilarityBasedCrossEntropy(temperature=0.5, device=device)
 
 
-# In[111]:
+# In[25]:
 
 
 # Define evaluation metric (Mean Reciprocal Rank)
@@ -183,7 +184,7 @@ def calculate_mrr(image_embeddings, sensor_embeddings):
     return mean_rank, mrr
 
 
-# In[112]:
+# In[ ]:
 
 
 # Start training
@@ -241,7 +242,7 @@ for epoch in range(configs['epochs']):
     print(result)
 
 print("Training complete.")
-df_train.to_csv('./logs/train_log.csv', index=False)
+df_train.to_csv(f'./logs/train_log_{run_name}.csv', index=False)
 
 # Save model
 torch.save(dpr_model.state_dict(), configs['model_path'])
@@ -260,7 +261,7 @@ sns.lineplot(data=df_train, x='epoch', y='train_mrr', label='Training')
 sns.lineplot(data=df_train, x='epoch', y='valid_mrr', label='Validation')
 ax.set_ylabel('Mean reciprocal rank')
 plt.grid(axis='y')
-plt.savefig('./logs/mrr.pdf', transparent=True, bbox_inches='tight')
+plt.savefig(f'./logs/mrr_{run_name}.pdf', transparent=True, bbox_inches='tight')
 
 
 # In[ ]:
@@ -284,8 +285,7 @@ dpr_model_test.eval()
 image_emb, sensor_emb = dpr_model_test(images.to(device), sensors.to(device))
 
 
-# In[ ]:
-
-
-
-
+# If you want to run the model training in the background, convert the jupyter notebook to a Python file using the following command.
+# ```
+# jupyter nbconvert --to python train.ipynb 
+# ```
