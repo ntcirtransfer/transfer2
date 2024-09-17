@@ -74,13 +74,17 @@ GitHubのWebページに表示されるノートブックのコードは不完�
 
 ```
 DMR/
- ├ Lifelog-6/    Directory of NTCIR-18 Lifelog-6 dataset
- ├ notebooks/    Directory of Jupyter notebooks and Python files
- ├ models/       Directory of trained models (including image recognition models)
- ├ input/        Directory of topic file as input
- ├ output/       Directory of retrieval results as output
- ├ logs/         Directory of log files such as training results
- ├ submission.sh A Shell script describing the model run
+ ├ Lifelog-6/        Directory for the NTCIR-18 Lifelog-6 dataset  
+ ├ utils/            Directory for test topic file creation scripts and evaluation scripts  
+ ├ models/           Directory for saving models (including image recognition models)  
+ ├ input/            Directory for storing input topic files  
+ ├ output/           Directory for storing the output search results  
+ ├ logs/             Directory for storing log files, such as model training results  
+ ├ submission.sh     Shell script file describing model execution  
+ ├ predict.py        Python script for outputting search results  
+ ├ train.ipynb       Jupyter notebook for model training  
+ ├ train.py          Python script equivalent to `train.ipynb`  
+ ├ dpr_models.py     Model definition file  
  └ Dockerfile    A file with instructions for creating a Docker image
 ```
 
