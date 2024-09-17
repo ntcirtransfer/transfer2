@@ -61,7 +61,7 @@ $ docker save <image_name> | gzip > image.tar.gz
 
 1. モデルの訓練
 訓練用ノートブック`train.ipynb`を用いてモデルを訓練します．  
-手順について詳しくは[`README.md`](./README.md)と[`train.ipynb`](./notebook/train.ipynb)のノートブック内をご覧ください．
+手順について詳しくは[`README.md`](./README.md)と[`train.ipynb`](./train.ipynb)のノートブック内をご覧ください．
 
 2. Dockerイメージのビルド
 [`Dockerfile`](./Dockerfile)を用いて，Dockerイメージをビルドします．
