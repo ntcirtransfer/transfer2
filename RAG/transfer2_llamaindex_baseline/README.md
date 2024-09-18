@@ -7,4 +7,4 @@ This is a baseline of llamaindex.
 # run llamaindex
 - ``pip install -r requirements.txt`` to install required packages
 - ``python run.py``
-- Check the accuracy by ``python check_answer.py datasets/aio_02_dev_v1.0.jsonl result.json``
+- Check the accuracy by ``python check_answer.py datasets/aio_02_dev_v1.0.jsonl result_top1.jsonl``
