@@ -206,18 +206,7 @@ def generate_answers(questions):
         Original Answer: {existing_answer}\n
         New Answer: 
         [/INST]
-        """)
-
-        qa_template = QuestionAnswerPrompt("""<s>[INST] <<SYS>>\n
-        あなたは誠実で優秀な日本人のアシスタントです。\n
-        <</SYS>>\n\n
-        コンテキスト情報を参考にqueryに対して20文字以内で答えだけを単語で簡潔に回答してください。\n
-        Context: {context_str}
-        \n
-        Query: {query_str}\n
-        [/INST]
-        """)
-        
+        """)       
 
     if hybrid:
         query_engine = index.as_query_engine(
