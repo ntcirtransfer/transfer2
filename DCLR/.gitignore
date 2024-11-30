@@ -1,3 +1,7 @@
 *-checkpoint.ipynb
 *-checkpoint.md
 *.swp
+corpus/**
+indexes/**
+models/**
+runs/**
