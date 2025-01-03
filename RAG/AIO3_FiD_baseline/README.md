@@ -6,12 +6,12 @@ Note
 - No need for docker in transfer2
 - Download our trained models (official model release from AIO has ended)
 # preparation for retriver
-- download retriver and embedding from [Google Drive](https://drive.google.com/file/d/1y8G_WB5bZLmAWBL8b3-AlGRVAprR0498/view?usp=sharing)
+- download retriver and embedding from [Google Drive](https://drive.google.com/file/d/1NIEOgGuHe6eo2PSYR-EnrCT4q_W92tDI/view?usp=sharing)
 - ``mkdir retrivers/AIO3_DPR/model``
 - put them into the above directory
 
 # preparation for FiD
-- download FiD from [Google Drive](https://drive.google.com/file/d/1t-jKeaXDmjzFZWym5oBd_rgX9nPR7RfT/view?usp=sharing)
+- download FiD from [Google Drive](https://drive.google.com/file/d/16SSqpPLZ6QDoGFg8u76f_H9sBlDJ30Ie/view?usp=sharing)
 - ``mkdir generators/fusion_in_decoder/model``
 - put them into the above directory 
 
