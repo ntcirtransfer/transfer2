@@ -84,7 +84,7 @@ $ docker save org-baseline-run | gzip > org-baseline-run.tar.gz
 ## 評価方法
 
 ### 評価尺度
-後日公開
+Mean reciprocal rank
 
 ### 評価用マシンのスペック
 後日公開
@@ -104,4 +104,97 @@ $ docker save org-baseline-run | gzip > org-baseline-run.tar.gz
 &nbsp;
 
 # How to Create and Submit a Docker Image for the DMR Subtask
-To be updated.
+This page is based on the guidelines provided for [submissions to the leaderboard](https://sites.google.com/view/project-aio/competition2/how-to-use-leaderboard) of the AI King—Quiz AI Japan Championship.
+
+## Requirements for Docker Images
+Submitted Docker images must meet the following requirements:
+
+### Requirement 1: Include an inference script `~/submission.sh`
+The Docker image must include a script `~/submission.sh` that outputs search results based on the given topic data. It should be executable using the following command:
+```bash
+$ bash ./submission.sh <input_file> <output_file>
+```
+
+#### Input Data Format
+Here, `<input_file>` is the topic data provided to the system in the following JSON format:
+```json
+[{"topic_id":"img2sen_001", "dmr_minute_id":"00001", "input_modal":"image", "output_modal":"sensor", "image":..., "heart_rate(bpm)":87.0, ...},
+ {"topic_id":"img2sen_001", "dmr_minute_id":"00002", "input_modal":"image", "output_modal":"sensor", "image":..., "heart_rate(bpm)":91.0, ...},
+ ...
+]
+```
+
+- `topic_id`: The ID assigned to each search topic.
+- `dmr_minute_id`: The ID assigned to each data point, which differs from the `minute_id` provided in Lifelog-6 data.
+- `input_modal`: The modality provided as the search query, either `image` or `sensor`.
+- `output_modal`: The modality being searched, either `image` or `sensor`.
+- `image`: The numerical data representing the image.
+- Additional elements consist of metadata and location information provided in Lifelog-6.
+
+For more details, please refer to the create_topics.ipynb notebook provided by the organizers.
+
+#### Output Data Format
+The `<output_file>` should be output in the following CSV format. Participants' systems must generate this output:
+
+```
+group_id,run_id,topic_id,dmr_minute_id,score
+ORG,baseline,img2sen_001,536,-0.26862192
+ORG,baseline,img2sen_001,7,0.73308593
+ORG,baseline,img2sen_001,413,-0.12440574
+```
+
+- `group_id`: The participant's GROUP ID, set independently with up to 5 alphanumeric characters.
+- `run_id`: The RUN ID, set independently with up to 10 alphanumeric characters.
+- `topic_id`: The topic ID specified in `<input_file>`.
+- `dmr_minute_id`: The data ID specified in `<input_file>`.
+- `score`: The score predicted by the system for `dmr_minute_id` within `topic_id`.
+
+### Requirement 2: Include all necessary files for the model
+The Docker image must contain all the files necessary for the model to function and be able to operate independently.
+Downloading files from outside the Docker image is not allowed.
+
+### Requirement 3: The compressed Docker image must be within 10 GiB
+The Docker image should be saved and compressed using the following command:
+The compressed file (e.g., `image.tar.gz`) will be subject to the size limitation.
+
+```bash
+$ docker save <image_name> | gzip > image.tar.gz
+```
+
+## Example of Building a Docker Image
+Below is an example of building a Docker image using the baseline system published by the organizers:
+
+1. Train the model using the train.ipynb notebook.
+For detailed steps, refer to [`README.md`](./README.md) and the notebook [`train.ipynb`](./train.ipynb).
+
+2. Build the Docker image using the [`Dockerfile`](./Dockerfile).
+
+```bash
+$ docker build -t org-baseline-run .
+```
+
+3. Verify the Docker image using the `create_topics.ipynb` notebook.
+
+```bash
+$ docker run --rm -v "<DMR dir absolute path>:/app/" org-baseline-run bash ./submission.sh input/input_test.json output/org-baseline_scores.csv
+```
+
+4. After confirming that the Docker image works correctly, save and compress the image.
+
+```bash
+$ docker save org-baseline-run | gzip > org-baseline-run.tar.gz
+```
+
+## Evaluation Method
+### Evaluation Metrics
+To be announced.
+
+### Specifications of the Evaluation Machine
+To be announced.
+
+## Rules for Submitting Docker Images
+- Teams submit their systems by uploading the saved and compressed Docker image file.
+- Each team can submit up to three Docker images (RUNs).
+- File names for Docker images should follow the format `<GROUP ID>-<RUN ID>-run.tar.gz`.
+- For example, the baseline system of the organizers (`GROUP ID: org`, RUN ID: `baseline`) would be named `org-baseline-run.tar.gz`.
+- Submission methods will be announced later.
